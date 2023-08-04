@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "product": [
+    {
+      "produktname": "Erdbeeren",
+      "masseinheit": "Kilogramm",
+      "anzahl": 3,
+      "laden": "Aldi",
+      "ort": "Bottighofen",
+      "preis": "5.95",
+      "id": 1
+    },
+    {
+      "produktname": "Bananen",
+      "masseinheit": "Stück",
+      "anzahl": 10,
+      "laden": "Migros",
+      "ort": "Kreuzlingen",
+      "preis": "4.65",
+      "id": 2
+    }
+  ]
+}

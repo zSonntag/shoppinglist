@@ -1,0 +1,66 @@
+
+
+<div mat-dialog-title>
+    <h1>Produkt hinzufügen</h1>
+</div>
+<form [formGroup]="prodForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+    <mat-form-field appearance="outline">
+        <mat-label>Produktname</mat-label>
+        <input matInput type="text" required placeholder="Beispiel: Bananen" formControlName="produktname">
+        <mat-error *ngIf="produktname.hasError('required')">
+            Das Feld muss ausgefüllt sein
+          </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Preis</mat-label>
+        <input matInput type="text" placeholder="Beispiel: 4.99" formControlName="preis">
+      </mat-form-field>
+
+    </div>
+      <div class="row">
+      <mat-form-field>
+        <mat-label>Masseinheit</mat-label>
+        <select matNativeControl required formControlName="masseinheit">
+          <option label="--Masseinheit auswählen --"></option>
+          <option value="Stück">Stück</option>
+          <option value="Flasche">Flasche</option>
+          <option value="Gramm">Gramm</option>
+          <option value="Kilogramm">Kilogramm</option>
+          <option value="Kasten">Kasten</option>
+          <option value="Bund">Bund</option>
+        </select>
+        <mat-error *ngIf="masseinheit.hasError('required')">
+          Das Feld muss ausgefüllt sein
+        </mat-error>
+        <mat-hint>Hier Masseinheit auswählen</mat-hint>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Anzahl</mat-label>
+        <input matInput type="number" placeholder="Beispiel: 5" formControlName="anzahl">
+      </mat-form-field>
+    </div>
+
+      <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Laden</mat-label>
+        <input matInput type="text" placeholder="Beispiel: Coop" formControlName="laden">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ort</mat-label>
+        <input matInput type="text" placeholder="Beispiel: Bottighofen" formControlName="ort">
+      </mat-form-field>
+    
+    </div>
+</div>
+
+
+
+<div mat-dialog-action class="action">
+    <button mat-raised-button color="warn" (click)="onCancelClick()" class="formButton">ABBRECHEN</button>
+    <button mat-raised-button color="primary" type="submit" class="formButton">HINZUFÜGEN</button>
+</div>
+</form>

@@ -1,0 +1,84 @@
+
+  <mat-toolbar color="white">
+    <span>
+      <img src="/assets/Logo.png">
+    </span>
+    <span class="example-spacer">
+    <button mat-raised-button color="primary" (click)="openAddEditProdForm()">
+      PRODUKT HINZUFÜGEN
+    </button>
+  </span>
+  </mat-toolbar>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource">
+      
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="produktname">
+        <th mat-header-cell *matHeaderCellDef> Produktname </th>
+        <td mat-cell *matCellDef="let element"> {{element.produktname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="masseinheit">
+        <th mat-header-cell *matHeaderCellDef> Masseinheit </th>
+        <td mat-cell *matCellDef="let element"> {{element.masseinheit}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="anzahl">
+        <th mat-header-cell *matHeaderCellDef> Anzahl </th>
+        <td mat-cell *matCellDef="let element"> {{element.anzahl}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="laden">
+        <th mat-header-cell *matHeaderCellDef> Laden </th>
+        <td mat-cell *matCellDef="let element"> {{element.laden}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ort">
+        <th mat-header-cell *matHeaderCellDef> Ort </th>
+        <td mat-cell *matCellDef="let element"> {{element.ort}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="preis">
+        <th mat-header-cell *matHeaderCellDef> Preis </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.preis | currency:'CHF' }} 
+          <br>
+          Total: {{ getTotalPriceForElement(element) | roundTo5Rp | currency:'CHF'}}
+        </td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="footer">
+        <td mat-footer-cell *matFooterCellDef colspan="5" style="font-size: 20px;">
+          Gesamtpreis: <span style="color: red;">{{ getSumOfAllProducts() | roundTo5Rp | currency:'CHF' }}</span>
+        </td>
+      </ng-container>
+      <tr mat-footer-row *matFooterRowDef="['footer']"></tr>      
+
+
+      <ng-container matColumnDef="aktionen">
+        <th mat-header-cell *matHeaderCellDef> Aktionen </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button mat-icon-button color="warn" (click)="deleteProduct(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    
+    <mat-paginator [pageSizeOptions]="[20, 50, 100]"
+                   showFirstLastButtons>
+    </mat-paginator>
+
+  </div>
+  
